@@ -1,0 +1,14 @@
+[
+  {
+    "caption": "GotoLastEditEnhanced: Goto last edit",
+    "command": "goto_last_edit_enhanced"
+  },
+
+  {
+    "caption": "GotoLastEditEnhanced: Goto next edit",
+    "command": "goto_last_edit_enhanced",
+    "args": {
+      "backward": true
+    }
+  }
+]
