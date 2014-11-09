@@ -1,7 +1,10 @@
 [
   {
     "keys": ["alt+z"],
-    "command": "goto_last_edit_enhanced"
+    "command": "goto_last_edit_enhanced",
+    "context": [
+      {"key": "setting.sublime_enhanced_keybindings", "operator": "equal", "operand": true},
+    ]
   },
 
   {
@@ -9,6 +12,9 @@
     "command": "goto_last_edit_enhanced",
     "args": {
       "backward": true
-    }
+    },
+    "context": [
+      {"key": "setting.sublime_enhanced_keybindings", "operator": "equal", "operand": true},
+    ]
   }
 ]

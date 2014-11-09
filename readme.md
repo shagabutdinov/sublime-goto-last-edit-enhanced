@@ -6,7 +6,7 @@ some goto last edit before I did this plugin).
 
 ### Demo
 
-![Demo](https://raw.github.com/shagabutdinov/sublime-goto-last-edit-enhanced/master/demo/demo.gif "Demo")
+![Demo](https://github.com/shagabutdinov/sublime-enhanced-demos/raw/master/goto_last_edit_enhanced.gif "Demo")
 
 
 ### Installation
@@ -37,3 +37,8 @@ go to last edit before last edit and etc.
 |----------------|--------------------|--------------------------------------|
 | Goto last edit | alt+z              | GotoLastEditEnhanced: Goto last edit |
 | Goto next edit | alt+shift+z        | GotoLastEditEnhanced: Goto next edit |
+
+
+### Dependencies
+
+None
