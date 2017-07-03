@@ -1,14 +1,25 @@
 import sublime
 import sublime_plugin
 
+MAX_HIST_SIZE = 5000
+
 class History():
   def __init__(self):
     self.index = 0
+    self.start = 0
     self.max = 0
+
+  def remove_oldest(self):
+    self.start = self.start + 1
+    return (self.start - 1)
 
   def increment(self):
     self.max += 1
     self.index = self.max
+
+  def size(self):
+    return self.max - self.start
+
 
 class Collection():
   def __init__(self):
@@ -27,7 +38,7 @@ collection = Collection()
 class GotoLastEditEnhanced(sublime_plugin.TextCommand):
   def run(self, edit, backward = False):
     history = collection.get(self.view)
-    history_range = reversed(range(0, history.index + 1))
+    history_range = reversed(range(history.start, history.index + 1))
     if backward:
       history_range = range(history.index, history.max + 1)
 
@@ -57,5 +68,9 @@ class GotoLastEditEnhanced(sublime_plugin.TextCommand):
 class Listener(sublime_plugin.EventListener):
   def on_modified(self, view):
     history = collection.get(view)
+    if history.size() >= MAX_HIST_SIZE:
+      oldest = history.remove_oldest()
+      view.erase_regions('goto_last_edit_' + str(oldest))
+
     history.increment()
     view.add_regions('goto_last_edit_' + str(history.index), view.sel())
